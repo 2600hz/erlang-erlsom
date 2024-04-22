@@ -1,5 +1,7 @@
 APPLICATION := erlsom
 
+REBAR ?= rebar3
+
 ERL := erl
 EPATH := -pa ebin
 TEST_EPATH := -pa .eunit
@@ -14,25 +16,25 @@ APPS=kernel stdlib
 all: compile
 
 compile:
-	@./rebar compile
+	@$(REBAR) compile
 
 doc:
-	@./rebar doc
+	@$(REBAR) doc
 
 clean:
-	@./rebar clean
+	@$(REBAR) clean
 
 build-plt: compile
-	@./rebar build-plt
+	@$(REBAR) build-plt
 
 check-plt: compile
-	@./rebar check-plt
+	@$(REBAR) check-plt
 
 dialyze:
-	@./rebar dialyze
+	@$(REBAR) dialyze
 
 eunit:
-	@./rebar eunit
+	@$(REBAR) eunit
 
 shell: compile
 	$(ERL) -sname $(APPLICATION) $(EPATH)
