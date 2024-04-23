@@ -113,7 +113,7 @@ standard_types(AnyAtts) ->
   "-endif.\n".
 
 writeTypes(Types, TypeHierarchy, AnyAtts) ->
-  [standard_types(AnyAtts), [writeType(T, TypeHierarchy, AnyAtts) || T <- Types]].
+  [standard_types(AnyAtts), [writeType(T, TypeHierarchy, AnyAtts) || T <- lists:usort(Types)]].
 
 writeType(#type{nm = '_document'}, _, _) ->
   [];
